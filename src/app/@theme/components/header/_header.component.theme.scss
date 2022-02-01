@@ -1,0 +1,16 @@
+@mixin base-header-theme($theme-name) {
+  /deep/ base-header {
+    .logo > a {
+      color: $nga-color-secondary !important;
+
+      @include hover-focus-active {
+        color: $nga-color-inverse !important;
+      }
+    }
+
+    .left > *,
+    .right > * {
+      border-color: rgba($nga-color-inverse, 0.2);
+    }
+  }
+}

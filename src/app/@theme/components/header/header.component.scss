@@ -1,0 +1,75 @@
+:host {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+    width: calc(#{nb-theme(sidebar-width)} - #{nb-theme(header-padding)} + 5);
+  }
+
+  div {
+    display: flex;
+    align-items: center;
+
+    & > * {
+      height: 100%;
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  .left {
+    > * {
+      padding: 0 1.25rem;
+      border-right-width: 1px;
+      border-right-style: solid;
+
+  .header-category {
+    padding: 20px;
+  }
+
+  .header-container {
+    display: flex;
+    align-items: center;
+    width: auto;
+
+      &:last-child {
+        border: none;
+      }
+    }
+
+    .control-icon.ion-navicon {
+      font-size: 2.8rem;
+    }
+
+    .logo {
+      font-size: 1.7rem;
+      font-weight: bold;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+
+      a {
+        font-weight: normal;
+      }
+    }
+  }
+
+  .right {
+    > * {
+      padding: 0 1.25rem;
+      border-left-width: 1px;
+      border-left-style: solid;
+
+      &:first-child {
+        border: none;
+      }
+
+      &:last-child {
+        padding-right: 0;
+      }
+    }
+  }
+}
