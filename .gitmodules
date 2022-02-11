@@ -1,4 +1,0 @@
-[submodule "api-src/meriwaliwish-api"]
-	path = api-src/meriwaliwish-api
-	url = https://github.com/sourabhedake/meriwaliwish-api.git
-	branch = master

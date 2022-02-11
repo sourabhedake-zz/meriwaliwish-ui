@@ -1,26 +1,26 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'one-column-layout',
+  selector: 'ngx-one-column-layout',
+  styleUrls: ['./one-column.layout.scss'],
   template: `
-    <nga-layout>
-      <nga-layout-header fixed>
-        <header></header>
-      </nga-layout-header>
+    <nb-layout windowMode>
+      <nb-layout-header fixed>
+        <ngx-header></ngx-header>
+      </nb-layout-header>
 
-      <nga-sidebar>
-        <ng-content select="nga-menu"></ng-content>
-      </nga-sidebar>
+      <nb-sidebar class="menu-sidebar" tag="menu-sidebar" responsive>
+        <ng-content select="nb-menu"></ng-content>
+      </nb-sidebar>
 
-      <nga-layout-column>
+      <nb-layout-column>
         <ng-content select="router-outlet"></ng-content>
-      </nga-layout-column>
+      </nb-layout-column>
 
-      <nga-layout-footer fixed>
-        <footer></footer>
-      </nga-layout-footer>
-    </nga-layout>
+      <nb-layout-footer fixed>
+        <ngx-footer></ngx-footer>
+      </nb-layout-footer>
+    </nb-layout>
   `,
 })
-export class OneColumnLayoutComponent {
-}
+export class OneColumnLayoutComponent {}

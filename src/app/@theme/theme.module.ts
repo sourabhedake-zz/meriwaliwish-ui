@@ -1,63 +1,86 @@
-import { NgModule } from '@angular/core';
+import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {
+  NbActionsModule,
+  NbLayoutModule,
+  NbMenuModule,
+  NbSearchModule,
+  NbSidebarModule,
+  NbUserModule,
+  NbContextMenuModule,
+  NbButtonModule,
+  NbSelectModule,
+  NbIconModule,
+  NbThemeModule,
+} from '@nebular/theme';
+import { NbEvaIconsModule } from '@nebular/eva-icons';
+import { NbSecurityModule } from '@nebular/security';
 
 import {
-  NgaCardModule,
-  NgaLayoutModule,
-  NgaTabsetModule,
-  NgaRouteTabsetModule,
-  NgaSidebarModule,
-  NgaMenuModule,
-  NgaUserModule,
-} from '@nga/theme';
+  FooterComponent,
+  HeaderComponent,
+  SearchInputComponent,
+} from './components';
+import {
+  CapitalizePipe,
+  PluralPipe,
+  RoundPipe,
+  TimingPipe,
+  NumberWithCommasPipe,
+} from './pipes';
+import {
+  OneColumnLayoutComponent,
+} from './layouts';
+import { DEFAULT_THEME } from './styles/theme.default';
+import { COSMIC_THEME } from './styles/theme.cosmic';
+import { CORPORATE_THEME } from './styles/theme.corporate';
+import { DARK_THEME } from './styles/theme.dark';
 
-import { SearchInputComponent, HeaderComponent, FooterComponent } from './components';
-import { OneColumnLayoutComponent } from './layouts';
-
-const BASE_MODULES = [
-  CommonModule,
-  FormsModule,
-  ReactiveFormsModule,
+const NB_MODULES = [
+  NbLayoutModule,
+  NbMenuModule,
+  NbUserModule,
+  NbActionsModule,
+  NbSearchModule,
+  NbSidebarModule,
+  NbContextMenuModule,
+  NbSecurityModule,
+  NbButtonModule,
+  NbSelectModule,
+  NbIconModule,
+  NbEvaIconsModule,
 ];
-
-const NGA_MODULES = [
-  NgaCardModule,
-  NgaLayoutModule,
-  NgaTabsetModule,
-  NgaRouteTabsetModule,
-  NgaMenuModule,
-  NgaUserModule,
-];
-
 const COMPONENTS = [
   HeaderComponent,
   FooterComponent,
   SearchInputComponent,
-];
-
-const LAYOUTS = [
   OneColumnLayoutComponent,
-  HeaderComponent,
-  FooterComponent,
+];
+const PIPES = [
+  CapitalizePipe,
+  PluralPipe,
+  RoundPipe,
+  TimingPipe,
+  NumberWithCommasPipe,
 ];
 
 @NgModule({
-  imports: [
-    ...BASE_MODULES,
-    ...NGA_MODULES,
-    NgaSidebarModule.forRoot(),
-  ],
-  exports: [
-    ...BASE_MODULES,
-    ...NGA_MODULES,
-    ...COMPONENTS,
-    ...LAYOUTS,
-  ],
-  declarations: [
-    ...COMPONENTS,
-    ...LAYOUTS,
-  ],
+  imports: [CommonModule, ...NB_MODULES],
+  exports: [CommonModule, ...PIPES, ...COMPONENTS],
+  declarations: [...COMPONENTS, ...PIPES],
 })
 export class ThemeModule {
+  static forRoot(): ModuleWithProviders<ThemeModule> {
+    return {
+      ngModule: ThemeModule,
+      providers: [
+        ...NbThemeModule.forRoot(
+          {
+            name: 'default',
+          },
+          [ DEFAULT_THEME, COSMIC_THEME, CORPORATE_THEME, DARK_THEME ],
+        ).providers,
+      ],
+    };
+  }
 }
