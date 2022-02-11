@@ -1,5 +1,5 @@
 {
-  "name": "nga-demo",
+  "name": "meriwaliwish",
   "version": "2.0.0-alpha.0",
   "license": "MIT",
   "scripts": {
@@ -11,7 +11,7 @@
     "build:prod": "npm run build -- --prod",
     "build:prod:aot": "npm run build:prod -- --aot",
     "build:ci": "npm-run-all -p -r build:prod build:prod:aot",
-    "build:ghpages": "npm run build:prod:aot -- --base-href \"https://akveo.github.io/ng2-admin/\" && ngh",
+    "build:ghpages": "npm run build:prod:aot -- --base-href && ngh",
     "test": "ng test -sr",
     "test:coverage": "rimraf coverage && npm run test -- -cc",
     "lint": "ng lint",
